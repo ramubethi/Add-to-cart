@@ -1,40 +1,29 @@
-import { useContext } from "react";
-import ProductList from  "./ProductList"
-import { ProductsProvider,ProductsContext } from "./context/ProductsContext";
+import Header from "./Components/Header";
+import ProductList from  "./Pages/ProductList"
+import { ProductsProvider, } from "./context/ProductsContext";
+import ProductDetail from "./Pages/ProductDetail";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import TaskManagementApp from ".//assets/TaskManagementApp"
 import './App.css'
-
-
-const Header = () => {
-  const { state } = useContext(ProductsContext);
-
-return (
-    <div className="bg-white shadow-md p-4 flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-blue-600">Product Store 🛒</h1>
-          <div className="relative">
-              <span className="text-lg font-semibold">Cart</span>
-              {state.cart.length > 0 && (
-                <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full absolute -top-2 -right-4">
-                    {state.cart.length}
-                  </span>
-              )}
-          </div>
-      </div>
-  );
-};
-
+import Cart from "./Pages/Cart"
+import Login from "./Pages/Login";
+import CheckOut from "./Pages/CheckOut";
 
 function App() {
-  return(
-  <ProductsProvider>
-  <div className="bg-yellow-100">
-  <div className="min-h-screen bg-gray-100">
-  <Header />
-          
-          <ProductList />
-      </div>
-  </div>
-</ProductsProvider>
-);
+  return (
+    <ProductsProvider>
+      <Router>
+        <Header />
+        <Routes>
+        <Route path="/productDetails" element={<ProductList />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/" element={<ProductList />} />
+          <Route path="/login" element={<Login />} /> 
+          <Route path="/checkout" element={<CheckOut />} />
+        </Routes>
+      </Router>
+    </ProductsProvider>
+  );
 }
 export default App
