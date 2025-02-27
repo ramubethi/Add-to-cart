@@ -43,10 +43,10 @@ export const ProductsProvider = ({ children }) => {
             try {
                 const response = await fetch("https://fakestoreapi.com/products");
                 const data = await response.json();
-                console.log("Fetched products:", data);
+                // console.log("Fetched products:", data);
                 dispatch({ type: "FETCH_SUCCESS", payload: data });
             } catch (error) {
-                console.error("Fetch error:", error);
+                // console.error("Fetch error:", error);
                 dispatch({ type: "FETCH_ERROR", payload: error.message });
             }
         };

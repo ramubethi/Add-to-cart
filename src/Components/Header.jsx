@@ -11,15 +11,16 @@ const Header = () => {
     const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
 
     const handleLogout = () => {
-        localStorage.removeItem("isAuthenticated"); // ✅ Remove login state
-        navigate("/login"); // ✅ Redirect to login
+        localStorage.removeItem("isAuthenticated"); 
+        navigate("/login"); 
     };
 
     return (
         <div className={`p-4 shadow-md flex justify-between items-center transition ${
             darkMode ? "bg-gray-900 text-white" : "bg-white text-black"
         }`}>
-            <h1 className="text-3xl font-bold text-blue-600 dark:text-blue-300">Product Store 🛒</h1>
+            <h1 className="text-3xl font-bold text-blue-600 dark:text-blue-300 !cursor-pointer hover"           onClick={() => navigate("/productlist")}
+            >Product Store 🛒</h1>
 
             <div className="flex items-center gap-4">
                 {/* Dark Mode Toggle */}
