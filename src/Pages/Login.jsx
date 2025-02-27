@@ -25,7 +25,7 @@ const Login = () => {
             console.log("Response status:", response.status);
     
             const data = await response.json();
-            // console.log("Response data:", data);
+            console.log("Response data:", data);
     
             if (response.ok) {
                 localStorage.setItem("token", data.token); 

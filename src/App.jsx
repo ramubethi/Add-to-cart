@@ -15,28 +15,17 @@ function App() {
     <ProductsProvider>
       <Router>
 
-
-      
-      <Route element={<ProtectedRoutes />}>
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<CheckOut />} />
-          </Route>
-
-
-
-
         <Header />
         <Routes>
         <Route path="/productDetails" element={<ProductList />} />
 
-
-
-
-
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/" element={<ProductList />} />
           <Route path="/login" element={<Login />} /> 
-        
+          <Route element={<ProtectedRoutes />}>
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<CheckOut />} />
+          </Route>
           <Route path="/productlist" element={<ProductList />} />
         </Routes>
       </Router>
